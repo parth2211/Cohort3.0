@@ -1,10 +1,12 @@
 import RandomUser from './components/RandomUser'
+import { Title } from './components/Title'
 
 function App() {
 
   return (
     <>
-      <RandomUser />
+        <Title/>
+        <RandomUser />
     </>
   )
 }
