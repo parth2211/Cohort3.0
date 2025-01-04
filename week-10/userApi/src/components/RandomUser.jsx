@@ -6,7 +6,7 @@ import RandomUserComp from './RandomUserComp';
 const RandomUser = () => {
 
     const [randeomUserList, setRanmdomUserList] = useState([]);
-    const [numberOfUsers, setNumberOfUsers] = useState(1);
+    const [numberOfUsers, setNumberOfUsers] = useState(5);
 
     const randomUserComp = randeomUserList.map((e) =>
         <RandomUserComp
