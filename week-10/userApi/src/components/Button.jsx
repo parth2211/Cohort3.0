@@ -1,26 +1,20 @@
-import axios from "axios";
+import "../App.css"
 
-export function Button ({randeomUserList, setRanmdomUserList}) {
+export function Button ({setNumberOfUsers}) {
 
-    const [numberOfUsers, setNumberOfUsers] = useState(0);
-
-    function handleChange(event) {
+    function handleSubmit(event) {
         setNumberOfUsers(event.target.value);
     }
 
-    function handleSubmit(event) {
-        event.preventDefault();
-        axios.get(`https://randomuser.me/api?results=${numberOfUsers}`)
-            .then((response) => {
-                setRanmdomUserList([...randeomUserList, response.data]);
-            })
-    }
-
     return (
-    
         <form onSubmit={handleSubmit}>
-            <label htmlFor="numberOfUsers">Number of User</label>
-            <input className="form-input-box" type="number" name="numberOfUsers" value={numberOfUsers} onChange={handleChange} />
+            <div>
+                <label htmlFor="userInput">Number Of Users</label>
+                <input type="text" name="petName" placeholder="Pet Name" />
+            </div>
+            <div>
+                <button type="submit">Submit</button>
+            </div>
         </form>
     )
 }

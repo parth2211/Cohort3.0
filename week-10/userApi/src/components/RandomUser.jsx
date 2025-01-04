@@ -1,41 +1,36 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
-import { Card } from './Card';
 import { Button } from './Button';
-
-function getNamePic(user) {
-    const firstName = user.name.first;
-    const picAddress = user.picture.large;
-    return {firstName, picAddress};
-}
+import RandomUserComp from './RandomUserComp';
 
 const RandomUser = () => {
 
     const [randeomUserList, setRanmdomUserList] = useState([]);
+    const [numberOfUsers, setNumberOfUsers] = useState(1);
+
+    const randomUserComp = randeomUserList.map((e) =>
+        <RandomUserComp
+            firstName={e.name}
+            picAddress={e.name}
+            key={e.id}
+        />
+    )
 
     useEffect(() => {
-
-        
-
-        axios.get('https://randomuser.me/api?page=2')
+        axios.get(`https://randomuser.me/api?results=${numberOfUsers}`)
             .then((response) => {
-                const {firstName, picAddress} = getNamePic(response.data.results[0]);
-                setRanmdomUserList({firstName, picAddress});
+                setRanmdomUserList([...randeomUserList, response.data.results]);
+                console.log(response.data.results)
             })
             .catch((error) => {
                 console.log(error)
             })
-    }, [randeomUserList]);
+    }, [numberOfUsers]);
 
     return (
         <div>
-            <Card>
-                <div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
-                    <img src={randeomUserList.picAddress} alt="User"/>
-                    <div style={{margin: 10, fontWeight: "bold"}}>{randeomUserList.firstName}</div>
-                </div>
-            </Card>
-            <Button randeomUserList={randeomUserList} setRanmdomUserList={setRanmdomUserList}/>
+            {randomUserComp}
+            <Button setNumberOfUsers={setNumberOfUsers}/>
         </div>
     )
 }

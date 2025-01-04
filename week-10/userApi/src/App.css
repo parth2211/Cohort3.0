@@ -1,16 +1,46 @@
-form {
-    display: flex;
-    border-radius: 4px;
-    justify-content: center;
-    padding: 10px;
+.randomUserComp {
+    display: flex;            /* Enables flexbox */
+    flex-direction: row;      /* Align items horizontally */
+    align-items: center;      /* Align items vertically in the center */
+    justify-content: center;  /* Center items horizontally */
 }
 
-.form-input-box {
+form {
+    margin-left: 850px;
+    background-color: #b4e8b2;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+}
+
+label {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+input {
     width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
+    padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    box-sizing: border-box;
-  }
+    outline: none;
+    font-size: 14px;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
