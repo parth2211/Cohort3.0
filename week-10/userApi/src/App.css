@@ -1,46 +1,57 @@
-.randomUserComp {
-    display: flex;            /* Enables flexbox */
-    flex-direction: row;      /* Align items horizontally */
-    align-items: center;      /* Align items vertically in the center */
-    justify-content: center;  /* Center items horizontally */
-}
-
+/* Form Container */
 form {
-    margin-left: 850px;
-    background-color: #b4e8b2;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 400px; /* Restrict the width of the form */
+    margin: 20px auto; /* Center the form */
     padding: 20px;
-    width: 300px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    align-items: center;
+    background: #f9f9f9; /* Light grey background */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
+/* Form Labels */
 label {
-    font-size: 16px;
-    margin-bottom: 8px;
+    display: block; /* Each label on its own line */
+    font-weight: bold;
+    margin-bottom: 8px; /* Space below label */
+    color: #333; /* Dark grey color for text */
 }
 
-input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    outline: none;
-    font-size: 14px;
+/* Input Fields */
+input[type="text"] {
+    width: 100%; /* Full width */
+    padding: 10px; /* Add padding inside the input */
+    border: 1px solid #ccc; /* Light grey border */
+    border-radius: 4px; /* Rounded corners */
+    font-size: 16px; /* Font size */
+    margin-bottom: 16px; /* Space below input field */
+    box-sizing: border-box; /* Include padding in width */
+    transition: border-color 0.3s ease; /* Smooth transition on focus */
 }
 
+input[type="text"]:focus {
+    border-color: #007BFF; /* Blue border on focus */
+    outline: none; /* Remove the default focus outline */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add a subtle shadow */
+}
+
+/* Submit Button */
 button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
+    width: 100%; /* Full width */
+    padding: 10px 15px; /* Padding inside the button */
+    font-size: 16px; /* Font size */
+    color: #fff; /* White text */
+    background: #007BFF; /* Blue background */
+    border: none; /* No border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth hover transition */
 }
 
 button:hover {
-    background-color: #0056b3;
+    background: #0056b3; /* Darker blue on hover */
+}
+
+/* Optional: Add space between form elements */
+form > div {
+    margin-bottom: 16px; /* Space between fields */
 }

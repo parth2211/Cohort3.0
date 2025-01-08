@@ -6,20 +6,20 @@ import RandomUserComp from './RandomUserComp';
 const RandomUser = () => {
 
     const [randeomUserList, setRanmdomUserList] = useState([]);
-    const [numberOfUsers, setNumberOfUsers] = useState(5);
+    const [numberOfUsers, setNumberOfUsers] = useState(1);
 
     const randomUserComp = randeomUserList.map((e) =>
         <RandomUserComp
-            firstName={e.name}
-            picAddress={e.name}
-            key={e.id}
+            firstName={e.name.first}
+            picAddress={e.picture.large}
+            key={e.id.value}
         />
     )
 
     useEffect(() => {
         axios.get(`https://randomuser.me/api?results=${numberOfUsers}`)
             .then((response) => {
-                setRanmdomUserList([...randeomUserList, response.data.results]);
+                setRanmdomUserList([...randeomUserList, ...response.data.results]);
                 console.log(response.data.results)
             })
             .catch((error) => {
@@ -28,9 +28,16 @@ const RandomUser = () => {
     }, [numberOfUsers]);
 
     return (
-        <div>
-            {randomUserComp}
-            <Button setNumberOfUsers={setNumberOfUsers}/>
+        <div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
+            <div style={{
+                    display: "flex",
+                    flexWrap: "wrap", // Optional: Allow wrapping to a new row if space is limited
+                    gap: "16px", // Add space between cards
+                    justifyContent: "center", // Center the cards horizontally
+                }}>
+                {randomUserComp}
+            </div>
+            <Button setNumberOfUsers={setNumberOfUsers}/>    
         </div>
     )
 }
